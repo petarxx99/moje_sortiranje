@@ -64,6 +64,8 @@ public:
 		}
 		int rezultat = koren->broj;
 		if (koren->deteLevo == nullptr && koren->deteDesno == nullptr){
+			delete koren;
+			koren = nullptr;
 			return rezultat;
 		}
 		
