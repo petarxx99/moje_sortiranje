@@ -41,7 +41,7 @@ public:
 			
 			int poslednjiIndeks = sledeceMesto.size() - 1;
 			if (!sledeceMesto[poslednjiIndeks]){
-				trenutniCvor->deteLevo = noviCvor;
+				trenutniCvor->deteLevo = noviCvor; //trenutniCvor == nullptr
 			} else {
 				trenutniCvor->deteDesno = noviCvor;
 			}
@@ -66,6 +66,7 @@ public:
 		if (koren->deteLevo == nullptr && koren->deteDesno == nullptr){
 			delete koren;
 			koren = nullptr;
+			sledeceMesto.resize(0);
 			return rezultat;
 		}
 		
@@ -255,6 +256,17 @@ int main(){
 	heap.ubaciBroj(2); */
 	
 	for(int i=0; i<8; i++){
+		int x = heap.izbaciNajmanjiBroj();
+		std::cout << x << std::endl;
+	} 
+	
+	int duzinaNiza = 8;
+	for(int i=duzinaNiza; i>0; i--){
+		heap.ubaciBroj(i);
+	}
+	
+	
+	for(int i=0; i<duzinaNiza; i++){
 		int x = heap.izbaciNajmanjiBroj();
 		std::cout << x << std::endl;
 	}
