@@ -41,7 +41,7 @@ public:
 			
 			int poslednjiIndeks = sledeceMesto.size() - 1;
 			if (!sledeceMesto[poslednjiIndeks]){
-				trenutniCvor->deteLevo = noviCvor; //trenutniCvor == nullptr
+				trenutniCvor->deteLevo = noviCvor; 
 			} else {
 				trenutniCvor->deteDesno = noviCvor;
 			}
@@ -248,7 +248,7 @@ private:
 int main(){
 
 	MinHeap heap;
-	/*heap.ubaciBroj(2);
+	heap.ubaciBroj(2);
 	heap.ubaciBroj(3);
 	heap.ubaciBroj(5);
 	heap.ubaciBroj(10);
@@ -257,23 +257,23 @@ int main(){
 	heap.ubaciBroj(4);
 	heap.ubaciBroj(1);   
 	
-
 	
 	for(int i=0; i<8; i++){
 		int x = heap.izbaciNajmanjiBroj();
 		std::cout << x << std::endl;
 	} 
 	
-	int duzinaNiza = 15;
+	int duzinaNiza = 100;
 	for(int i=duzinaNiza; i>0; i--){
 		heap.ubaciBroj(i);
 	}
 	
-	
+	std::vector<int> uredjeni(duzinaNiza);
 	for(int i=0; i<duzinaNiza; i++){
 		int x = heap.izbaciNajmanjiBroj();
-		std::cout << x << std::endl;
-	} */
+		uredjeni[i] = x;
+	} 
+	
 	
 	int n;
 	std::cout << "Koliko brojeva cete upisati: ";
@@ -289,5 +289,6 @@ int main(){
 	for(int i=0; i<n; i++){
 		std::cout << heap.izbaciNajmanjiBroj() << std::endl;
 	}
+	
 	return 0;
 }
