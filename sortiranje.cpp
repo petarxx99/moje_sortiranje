@@ -248,7 +248,7 @@ private:
 int main(){
 
 	MinHeap heap;
-	heap.ubaciBroj(2);
+	/*heap.ubaciBroj(2);
 	heap.ubaciBroj(3);
 	heap.ubaciBroj(5);
 	heap.ubaciBroj(10);
@@ -257,10 +257,7 @@ int main(){
 	heap.ubaciBroj(4);
 	heap.ubaciBroj(1);   
 	
-	/* heap.ubaciBroj(5);
-	heap.ubaciBroj(4);
-	heap.ubaciBroj(6);
-	heap.ubaciBroj(2); */
+
 	
 	for(int i=0; i<8; i++){
 		int x = heap.izbaciNajmanjiBroj();
@@ -276,7 +273,21 @@ int main(){
 	for(int i=0; i<duzinaNiza; i++){
 		int x = heap.izbaciNajmanjiBroj();
 		std::cout << x << std::endl;
+	} */
+	
+	int n;
+	std::cout << "Koliko brojeva cete upisati: ";
+	std::cin >> n;
+	
+	for(int i=0; i<n; i++){
+		int broj;
+		std::cin >> broj;
+		heap.ubaciBroj(broj);
 	}
 	
+	std::cout << "Sortirani brojevi: \n";
+	for(int i=0; i<n; i++){
+		std::cout << heap.izbaciNajmanjiBroj() << std::endl;
+	}
 	return 0;
 }
