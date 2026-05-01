@@ -191,6 +191,13 @@ private:
 		if (roditelj->deteDesno != nullptr){
 			roditelj->deteDesno->cvorRoditelj = roditelj;
 		}
+		
+		if (trenutni->deteLevo != nullptr){
+			trenutni->deteLevo->cvorRoditelj = trenutni;
+		}
+		if (trenutni->deteDesno != nullptr){
+			trenutni->deteDesno->cvorRoditelj = trenutni;
+		}
 	}
 	
 	void vratiSledeceMesto(int poslednjiIndeks){
@@ -260,7 +267,7 @@ int main(){
 		std::cout << x << std::endl;
 	} 
 	
-	int duzinaNiza = 8;
+	int duzinaNiza = 15;
 	for(int i=duzinaNiza; i>0; i--){
 		heap.ubaciBroj(i);
 	}
