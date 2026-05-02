@@ -22,6 +22,10 @@ public:
 		koren = nullptr;
 	}
 	
+	bool heapJePrazan(){
+		return koren == nullptr;
+	}
+	
 	void ubaciBroj(int broj){
 		if (koren == nullptr){
 			koren = new Cvor(broj, nullptr, nullptr, nullptr);
