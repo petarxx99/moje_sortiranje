@@ -81,7 +81,27 @@ public:
 		return rezultat;
 	}
 	
-	
+	bool sortirajNiz(std::vector<int> &niz, bool neopadajuce){
+		if (!heapJePrazan()){
+			return false;
+		}
+		
+		int duzinaNiza = niz.size();
+		for(int i=0; i<duzinaNiza; i++){
+			ubaciBroj(niz[i]);
+		}
+		
+		if(neopadajuce){
+			for(int i=0; i<duzinaNiza; i++){
+				niz[i] = izbaciNajmanjiBroj();
+			}
+		} else {
+			for(int i=duzinaNiza-1; i>=0; i--){
+				niz[i] = izbaciNajmanjiBroj();
+			}
+		}
+		return true;
+	}
 
 private:
 	Cvor *koren;
@@ -201,6 +221,17 @@ int main(){
 	while(!heap.heapJePrazan()){
 		std::cout << heap.izbaciNajmanjiBroj() << std::endl;
 	}
+	
+	
+	/* Proba */
+	int limit = 1000000;
+	std::vector<int> niz(limit);
+	
+	for(int i=0; i<limit; i++){
+		niz[i] = limit - i;
+	}
+	heap.sortirajNiz(niz, true);
+	std::cout << niz[limit-1] << std::endl;
 	
 	return 0;
 }
