@@ -84,7 +84,9 @@ public:
 	
 
 private:
-
+	Cvor *koren;
+	std::vector<bool> sledeceMesto;
+	
 	void zameniOdRoditelja(Cvor *roditelj){
 	
 		if (roditelj->deteLevo != nullptr && roditelj->deteLevo->broj < roditelj->broj){
@@ -178,8 +180,6 @@ private:
 		azurirajSledeceMestoNakonDodavanja(poslednjiIndeks - 1);
 	}
 	
-	Cvor *koren;
-	std::vector<bool> sledeceMesto;
 };
 
 int main(){
