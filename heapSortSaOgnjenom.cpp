@@ -139,45 +139,45 @@ private:
 	}
 	
 	
-	void vratiSledeceMesto(int poslednjiIndeks){
-		if (poslednjiIndeks < 0){
+	void vratiSledeceMesto(int dubina){
+		if (dubina < 0){
 			return;
 		}
 		
-		if (sledeceMesto[poslednjiIndeks]){
-			sledeceMesto[poslednjiIndeks] = false;
+		if (sledeceMesto[dubina]){
+			sledeceMesto[dubina] = false;
 			return;
 		}
 		
-		if (poslednjiIndeks == 0){
+		if (dubina == 0){
 			sledeceMesto[0] = true;
 			sledeceMesto.resize(sledeceMesto.size() - 1);
 			return;
 		}
 		
-		sledeceMesto[poslednjiIndeks] = true;
-		vratiSledeceMesto(poslednjiIndeks - 1);
+		sledeceMesto[dubina] = true;
+		vratiSledeceMesto(dubina - 1);
 	}
 
-	void azurirajSledeceMestoNakonDodavanja(int poslednjiIndeks){
-		if (poslednjiIndeks < 0){
+	void azurirajSledeceMestoNakonDodavanja(int dubina){
+		if (dubina < 0){
 			sledeceMesto.push_back(false);
 			return;
 		}
 	
-		if (!sledeceMesto[poslednjiIndeks]){
-			sledeceMesto[poslednjiIndeks] = true;
+		if (!sledeceMesto[dubina]){
+			sledeceMesto[dubina] = true;
 			return;
 		}
 		
-		if (poslednjiIndeks == 0){
+		if (dubina == 0){
 			sledeceMesto[0] = false;
 			sledeceMesto.push_back(false);
 			return;
 		}
 		
-		sledeceMesto[poslednjiIndeks] = false;
-		azurirajSledeceMestoNakonDodavanja(poslednjiIndeks - 1);
+		sledeceMesto[dubina] = false;
+		azurirajSledeceMestoNakonDodavanja(dubina - 1);
 	}
 	
 };
