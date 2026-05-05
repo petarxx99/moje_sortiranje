@@ -162,13 +162,9 @@ private:
 	
 	
 	void vratiSledeceMesto(int dubina){
-		if (dubina < 0){
-			return;
-		}
 		
 		if (sledeceMesto[dubina]){
-			sledeceMesto[dubina] = false;
-			
+			sledeceMesto[dubina] = false;	
 		} else if (dubina == 0){
 			sledeceMesto[0] = true;
 			sledeceMesto.resize(sledeceMesto.size() - 1);
@@ -179,17 +175,12 @@ private:
 	}
 
 	void azurirajSledeceMestoNakonDodavanja(int dubina){
-		if (dubina < 0){
-			sledeceMesto.push_back(false);
-			return;
-		}
 	
 		if (!sledeceMesto[dubina]){
 			sledeceMesto[dubina] = true;
 		} else if (dubina == 0){
 			sledeceMesto[0] = false;
 			sledeceMesto.push_back(false);
-			
 		} else {
 			sledeceMesto[dubina] = false;
 			azurirajSledeceMestoNakonDodavanja(dubina - 1);
