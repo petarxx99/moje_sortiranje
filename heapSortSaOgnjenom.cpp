@@ -168,17 +168,14 @@ private:
 		
 		if (sledeceMesto[dubina]){
 			sledeceMesto[dubina] = false;
-			return;
-		}
-		
-		if (dubina == 0){
+			
+		} else if (dubina == 0){
 			sledeceMesto[0] = true;
 			sledeceMesto.resize(sledeceMesto.size() - 1);
-			return;
+		} else {
+			sledeceMesto[dubina] = true;
+			vratiSledeceMesto(dubina - 1);
 		}
-		
-		sledeceMesto[dubina] = true;
-		vratiSledeceMesto(dubina - 1);
 	}
 
 	void azurirajSledeceMestoNakonDodavanja(int dubina){
@@ -189,17 +186,14 @@ private:
 	
 		if (!sledeceMesto[dubina]){
 			sledeceMesto[dubina] = true;
-			return;
-		}
-		
-		if (dubina == 0){
+		} else if (dubina == 0){
 			sledeceMesto[0] = false;
 			sledeceMesto.push_back(false);
-			return;
+			
+		} else {
+			sledeceMesto[dubina] = false;
+			azurirajSledeceMestoNakonDodavanja(dubina - 1);
 		}
-		
-		sledeceMesto[dubina] = false;
-		azurirajSledeceMestoNakonDodavanja(dubina - 1);
 	}
 	
 };
