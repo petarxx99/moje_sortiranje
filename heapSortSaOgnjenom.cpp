@@ -204,24 +204,29 @@ private:
 	
 };
 
-void testirajBrzinu(MinHeap &heap){
+bool sortirajNiz(int *niz, int duzinaNiza, bool neopadajuci){
+	MinHeap heap;
+	return heap.sortirajNiz(niz, duzinaNiza, neopadajuci);
+}
+
+void testirajBrzinu(){
 	
-	int limit = 1000000; // milion
-	std::vector<int> niz(limit);
-	std::vector<int> niz2(limit);
+	int duzinaNiza = 1000000; // milion
+	std::vector<int> niz(duzinaNiza);
+	std::vector<int> niz2(duzinaNiza);
 	
-	for(int i=0; i<limit; i++){
-		niz[i] = limit - i;
-		niz2[i] = limit - i;
+	for(int i=0; i<duzinaNiza; i++){
+		niz[i] = duzinaNiza - i;
+		niz2[i] = duzinaNiza - i;
 	}
 	
 	/* Merenje vremena mojoj sort funkciji */
 	auto pocetak = std::chrono::high_resolution_clock::now();
-	heap.sortirajNiz(niz.data(), niz.size(), true);
+	sortirajNiz(niz.data(), niz.size(), true);
 	auto kraj = std::chrono::high_resolution_clock::now();
 	
 	auto trajanje = std::chrono::duration_cast<std::chrono::microseconds>(kraj - pocetak);
-	std::cout << "Trebalo je " << trajanje.count() << " mikrosekundi da se sortira " << limit <<
+	std::cout << "Trebalo je " << trajanje.count() << " mikrosekundi da se sortira " << duzinaNiza <<
 	 " brojeva mojom sort funkcijom." << std::endl;
 
 
@@ -231,7 +236,7 @@ void testirajBrzinu(MinHeap &heap){
 	kraj = std::chrono::high_resolution_clock::now();
 	trajanje = std::chrono::duration_cast<std::chrono::microseconds>(kraj - pocetak);
 	
-	std::cout << "Trebalo je " << trajanje.count() << " mikrosekundi da se sortira " << limit <<
+	std::cout << "Trebalo je " << trajanje.count() << " mikrosekundi da se sortira " << duzinaNiza <<
 	 " brojeva ugradjenom sort funkcijom." << std::endl;
 }
 
@@ -256,6 +261,6 @@ int main(){
 	}
 	
 	std::cout << "Sada sledi merenje brzine mojoj sort funkciji..." << std::endl;
-	testirajBrzinu(heap);
+	testirajBrzinu();
 	return 0;
 }
