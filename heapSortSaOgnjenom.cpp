@@ -1,5 +1,8 @@
 #include<iostream>
 #include<vector>
+#include<chrono>
+#include<algorithm>
+
 
 class Cvor{
 public:
@@ -81,12 +84,11 @@ public:
 		return rezultat;
 	}
 	
-	bool sortirajNiz(std::vector<int> &niz, bool neopadajuce){
+	bool sortirajNiz(int *niz, int duzinaNiza, bool neopadajuce){
 		if (!heapJePrazan()){
 			return false;
 		}
 		
-		int duzinaNiza = niz.size();
 		for(int i=0; i<duzinaNiza; i++){
 			ubaciBroj(niz[i]);
 		}
@@ -202,6 +204,37 @@ private:
 	
 };
 
+void testirajBrzinu(MinHeap &heap){
+	
+	int limit = 1000000; // milion
+	std::vector<int> niz(limit);
+	std::vector<int> niz2(limit);
+	
+	for(int i=0; i<limit; i++){
+		niz[i] = limit - i;
+		niz2[i] = limit - i;
+	}
+	
+	/* Merenje vremena mojoj sort funkciji */
+	auto pocetak = std::chrono::high_resolution_clock::now();
+	heap.sortirajNiz(niz.data(), niz.size(), true);
+	auto kraj = std::chrono::high_resolution_clock::now();
+	
+	auto trajanje = std::chrono::duration_cast<std::chrono::microseconds>(kraj - pocetak);
+	std::cout << "Trebalo je " << trajanje.count() << " mikrosekundi da se sortira " << limit <<
+	 " brojeva mojom sort funkcijom." << std::endl;
+
+
+    /* Merenje vremena ugradjenoj sort funkciji */
+	pocetak = std::chrono::high_resolution_clock::now();
+	std::sort(niz2.begin(), niz2.end());
+	kraj = std::chrono::high_resolution_clock::now();
+	trajanje = std::chrono::duration_cast<std::chrono::microseconds>(kraj - pocetak);
+	
+	std::cout << "Trebalo je " << trajanje.count() << " mikrosekundi da se sortira " << limit <<
+	 " brojeva ugradjenom sort funkcijom." << std::endl;
+}
+
 int main(){
 
 	MinHeap heap;
@@ -222,16 +255,7 @@ int main(){
 		std::cout << heap.izbaciNajmanjiBroj() << std::endl;
 	}
 	
-	
-	/* Proba */
-	int limit = 1000000;
-	std::vector<int> niz(limit);
-	
-	for(int i=0; i<limit; i++){
-		niz[i] = limit - i;
-	}
-	heap.sortirajNiz(niz, true);
-	std::cout << niz[limit-1] << std::endl;
-	
+	std::cout << "Sada sledi merenje brzine mojoj sort funkciji..." << std::endl;
+	testirajBrzinu(heap);
 	return 0;
 }
